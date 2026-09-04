@@ -1,45 +1,87 @@
-# RubiksCube
+# Rubik's Cube 3D Simulator
 
-## 1. Description
-**RubiksCube** is a 3D interactive Rubik's Cube game and solver platform built with Kotlin Multiplatform (KMP) and Compose Multiplatform. Cross-compiling to Android, iOS, Desktop (JVM), and Web (Wasm/JS), the application renders a fully rotatable, interactive 3D Rubik's Cube featuring real-time animation of face turns, camera rotation, move histories, and custom rendering shaders.
+**Rubik's Cube 3D Simulator** is a native Android application that recreates the classic puzzle with smooth, interactive **3D graphics** powered by **OpenGL ES 3.0**. Rather than relying on an existing game framework, the project features a **custom-built rendering and game engine**, providing full control over graphics rendering, animations, input handling, and cube mechanics.
 
----
-
-## 2. Technical Special Aspects
-- **Custom 3D Game Engine (`gameengine`)**: Built from raw graphics principles without heavy third-party game engines, featuring custom matrix transformation pipelines (`Transformation.kt`), projection & view camera math (`Camera.kt`), geometry buffers (`Square`, `Face`, `Cube`), and shader management (`Shader.kt`).
-- **Multiplatform Graphics Acceleration Engine**: Target-native OpenGL/WebGL integration:
-  - Android: OpenGL ES 2.0/3.0 via `AndroidView` GLSurfaceView
-  - Desktop/JVM: LWJGL OpenGL context rendering
-  - Web (Wasm/JS): WebGL context canvas bindings
-- **State & Permutation Model**: High-performance internal representation of the 3x3x3 cube state (`RubiksCubeGame`), supporting standard Singmaster notation turns (F, B, U, D, L, R and prime moves) with smooth rotational interpolation.
-- **Interactive Gesture Raycasting**: Camera controls and direct touch/drag cube layer rotation (`RubiksCubeGameRenderer`, `CameraGears`).
+The project demonstrates low-level graphics programming, mathematical transformations, and real-time rendering while integrating a modern Jetpack Compose interface for application controls and user interaction.
 
 ---
 
-## 3. Technologies Used
-- **Languages**: Kotlin (100% Shared Graphics Engine & Game Logic), Swift (iOS host)
-- **Frameworks**: Compose Multiplatform, Kotlin Multiplatform
-- **Graphics APIs**: OpenGL ES, WebGL, LWJGL
-- **Mathematics**: Custom 3D Linear Algebra & Matrix Math Engine
-- **Build System**: Gradle KTS Multi-Module (`gameengine`, `shared`, `androidApp`, `desktopApp`, `webApp`, `iosApp`)
+## Highlights
+
+- **Interactive 3D Rubik's Cube**
+  - Fully rendered 3D cube with smooth animations.
+  - Interactive camera controls for viewing the cube from any angle.
+  - Realistic face rotations and cube manipulation.
+  - Accurate Rubik's Cube movement mechanics.
+
+- **Custom Game Engine**
+  - Built entirely from scratch without external game engines.
+  - Custom rendering pipeline.
+  - Scene and object management.
+  - Input processing and animation system.
+
+- **Modern Android UI**
+  - Jetpack Compose-based interface.
+  - Seamless integration between Compose UI and OpenGL rendering.
+  - Responsive controls for gameplay and configuration.
 
 ---
 
-## 4. Testing Technologies
-- **Unit & Math Testing**: `kotlin.test`
-- **Target Test Suites**:
-  - `commonTest`: Cube state permutation invariants, face rotation correctness, and transformation matrix calculations
-  - `jvmTest` & `iosTest`: Graphics pipeline initialization tests
+## Architecture
+
+The project separates rendering, game logic, and UI into independent modules, making the engine reusable and easier to maintain.
+
+### Core Technologies
+
+- **OpenGL ES 3.0+**
+  - Hardware-accelerated 3D rendering.
+  - Vertex and fragment shaders.
+  - Efficient GPU-based rendering pipeline.
+
+- **Custom Game Engine**
+  - Scene graph and object management.
+  - Camera system.
+  - Animation framework.
+  - Input handling.
+  - Rendering loop.
+
+- **Jetpack Compose**
+  - Declarative Android UI.
+  - State-driven controls and settings.
+  - Integration with the OpenGL rendering surface.
 
 ---
 
-## 5. Cloud Technologies
-- N/A (Embedded cross-platform 3D graphics application).
+## Technical Focus
+
+The project explores the fundamentals of real-time graphics programming and game engine architecture on Android.
+
+Key areas include:
+
+- OpenGL ES rendering pipeline.
+- Matrix and vector mathematics.
+- 3D transformations and camera systems.
+- Shader programming.
+- Real-time animation.
+- Touch gesture handling for 3D interaction.
+- Efficient rendering and GPU optimization.
+- Synchronization between Compose UI and the rendering engine.
 
 ---
 
-## 6. ROADMAP
-- [ ] Integrate two-phase Kociemba algorithm solver for step-by-step optimal solving guides.
-- [ ] Support customizable puzzle sizes (2x2x2, 4x4x4, 5x5x5, Pyraminx).
-- [ ] Implement WCA-compliant speedcubing timer with inspection countdowns and statistics.
-- [ ] Add online real-time multiplayer speed-solving battles over WebSockets.
+## Skills Demonstrated
+
+- Android Development
+- OpenGL ES 3.0+
+- Real-Time 3D Graphics
+- Custom Game Engine Development
+- Shader Programming (GLSL)
+- Matrix & Vector Mathematics
+- Camera Systems
+- Animation Systems
+- Rendering Pipeline Design
+- Touch Input Processing
+- Jetpack Compose
+- Performance Optimization
+- Clean Architecture
+- Graphics Programming
