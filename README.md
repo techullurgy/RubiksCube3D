@@ -6,6 +6,14 @@ The project demonstrates low-level graphics programming, mathematical transforma
 
 ---
 
+## Screenshots & Demo
+
+![RubiksCube_Feature_Graphic](https://storage.googleapis.com/techullurgy-media/app-demos/rubikscube3d/RubiksCube_Feature_Graphic.png)
+
+![rubikscube_1](https://storage.googleapis.com/techullurgy-media/app-demos/rubikscube3d/rubikscube_1.gif)
+
+---
+
 ## Highlights
 
 - **Interactive 3D Rubik's Cube**
