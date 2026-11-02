@@ -11,15 +11,15 @@ import kotlin.math.sqrt
 @Composable
 internal fun FilamentSceneScope.LightSetup() {
     IndirectLight(
-        irradiance = SphericalHarmonics.SolidRed,
-        intensity = 60_000f
+        irradiance = SphericalHarmonics.SolidWhite,
+        intensity = 90_000f
     )
 }
 
-private val SphericalHarmonics.Companion.SolidRed get() = SphericalHarmonics(
+private val SphericalHarmonics.Companion.SolidWhite get() = SphericalHarmonics(
     bands = 3,
     coefficients = floatArrayOf(
-        solidRedColor.red * COEFFICIENT, solidRedColor.green * COEFFICIENT, solidRedColor.blue * COEFFICIENT,
+        solidWhiteColor.red * COEFFICIENT, solidWhiteColor.green * COEFFICIENT, solidWhiteColor.blue * COEFFICIENT,
         0f, 0f, 0f,
         0f, 0f, 0f,
         0f, 0f, 0f,
@@ -32,4 +32,4 @@ private val SphericalHarmonics.Companion.SolidRed get() = SphericalHarmonics(
 )
 
 private val COEFFICIENT = (1f/(2f*sqrt(PI)).toFloat())
-private val solidRedColor = Color.Red
+private val solidWhiteColor = Color.White
