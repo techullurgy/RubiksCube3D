@@ -1,0 +1,31 @@
+/* ./matc -a metal -a opengl -a vulkan -p all -o <output-file-name>.filamat <this(input)-file-name>.mat */
+
+material {
+    name : "RubiksFaceMaterial",
+    shadingModel : lit,
+    requires : [ uv0 ],
+    parameters : [
+        { type : float3, name : faceColor },
+        { type : float3, name : borderColor },
+        { type : float,  name : borderThickness }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        
+        vec2 uv = getUV0();
+        float t = materialParams.borderThickness;
+        
+        // Safer scalar math to avoid GLSL device quirks
+        float maskX = step(t, uv.x) * step(t, 1.0 - uv.x);
+        float maskY = step(t, uv.y) * step(t, 1.0 - uv.y);
+        float mask = maskX * maskY;
+        
+        vec3 finalColor = mix(materialParams.borderColor, materialParams.faceColor, mask);
+        
+        material.baseColor = vec4(finalColor, 1.0);
+        material.roughness = mix(0.6, 0.3, mask);
+    }
+}
